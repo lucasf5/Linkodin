@@ -1,8 +1,8 @@
 const express = require('express');
-const TesteRoutes = require('../routes/TesteRoutes');
+const UserRoutes = require('./UserRoutes');
 
 const rotas = (app) => {
-    app.use(express.json(), TesteRoutes);
+    app.use(express.json(), UserRoutes);
 }
 
 module.exports = rotas;
