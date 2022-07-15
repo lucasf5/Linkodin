@@ -1,0 +1,96 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API",
+    "description": "API documentation for the API",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Lucas",
+      "url": "https://github.com/lucasf5",
+      "email": "lucasfpnt@gmail.com"
+    }
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "tags": ["users"],
+        "summary": "Summary: List all users",
+        "description": "List all users",
+        "operationId": "listUsers",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "A list of users"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/{id}": {
+      "get": {
+        "tags": ["users"],
+        "summary": "Summary: Get a user by id",
+        "description": "Get a user by id",
+        "operationId": "getUserById",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A user"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/create-user": {
+      "post": {
+        "tags": ["users"],
+        "summary": "Summary: Create a new user",
+        "description": "Create a new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "descricao": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Category already exists"
+          }
+        }
+      }
+    }
+  }
+}
