@@ -7,7 +7,7 @@ const UserRouter = express.Router();
 UserRouter
     .get('/', UserController.getAll)
     .get('/:id', UserController.getById)
-    .post('/', ValidationUser, UserController.create)
+    .post('/create-user', ValidationUser, UserController.create)
     .put('/:id', UserController.update)
     .delete('/:id', UserController.delete);
 

@@ -11,7 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.1",
+    "express-validator": "^6.14.2",
     "mongoose": "^6.4.4",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "swagger-ui-express": "^4.5.0",
+    "yup": "^0.32.11"
   }
 }
