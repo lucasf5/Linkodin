@@ -1,4 +1,4 @@
-const UserModel = require('../model/UserModel.js');
+import UserModel from '../model/UserModel.js';
 class UserController {
 
     static getAll = async (req, res) => {
@@ -71,4 +71,4 @@ class UserController {
 
 }
 
-module.exports = UserController;
+export default UserController;

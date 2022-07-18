@@ -1,8 +1,8 @@
-const express = require('express');
-const rotas = require('./app/routes');
-const db = require('./app/Config/dbConnect');
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('../swagger.json');
+import express from 'express';
+import rotas from './app/routes/index.js';
+import db from './app/Config/dbConnect.js';
+import { serve, setup } from 'swagger-ui-express';
+import swaggerDocument from '../swagger.json' assert {type: "json"};
 
 db.on("error", ()=> {
     console.log("Erro ao conectar com o banco de dados");
@@ -13,8 +13,8 @@ db.once("open", ()=>{
 
 const app = express();
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', serve, setup(swaggerDocument));
 
 rotas(app);
 
-module.exports = app;
+export default app;
