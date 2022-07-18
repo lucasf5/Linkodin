@@ -1,10 +1,10 @@
-const yup = require("yup");
+import { object, string } from "yup";
 
 const userValidator = (req, res, next) => {
-  const schema = yup.object().shape({
-    nome: yup.string().required("O nome é obrigatório"),
-    email: yup.string().email().required("Email é obrigatório"),
-    descricao: yup.string().required("A descrição é obrigatória"),
+  const schema = object().shape({
+    nome: string().required("O nome é obrigatório"),
+    email: string().email().required("Email é obrigatório"),
+    descricao: string().required("A descrição é obrigatória"),
   });
 
   schema
@@ -20,4 +20,4 @@ const userValidator = (req, res, next) => {
     .catch(next);
 };
 
-module.exports = userValidator;
+export default userValidator;

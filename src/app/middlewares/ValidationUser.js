@@ -1,4 +1,4 @@
-const UserModel = require("../model/UserModel");
+import UserModel from "../model/UserModel.js";
 
 const ValidationUser = async (req, res, next) => {
   const { nome, email, descricao } = req.body;
@@ -18,4 +18,4 @@ const ValidationUser = async (req, res, next) => {
   next();
 };
 
-module.exports = ValidationUser;
+export default ValidationUser;
