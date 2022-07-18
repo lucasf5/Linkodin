@@ -1,4 +1,4 @@
-const app = require('./src/index');
+import app from './src/index.js';
 
 const port = process.env.PORT || 3000;
 

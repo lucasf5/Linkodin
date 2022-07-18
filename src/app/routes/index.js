@@ -1,8 +1,8 @@
-const express = require('express');
-const UserRoutes = require('./UserRoutes');
+import { json } from 'express';
+import UserRoutes from './UserRoutes.js';
 
 const rotas = (app) => {
-    app.use(express.json(), UserRoutes);
+    app.use(json(), UserRoutes);
 }
 
-module.exports = rotas;
+export default rotas;
