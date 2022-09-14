@@ -1,6 +1,9 @@
 node_modules
-src/app/Config/dbConnect.js
-src/app/Config/dbMysql.js
+dbConnect.js
+dbMysql.js
+config.cjs
+config.js
+config.json
 
 # dotenv environment variable files
 .env
@@ -8,6 +11,9 @@ src/app/Config/dbMysql.js
 .env.test.local
 .env.production.local
 .env.local
+
+# Configuração do sequelize para utilizar migrations
+# .sequelizerc
 
 # Logs
 logs

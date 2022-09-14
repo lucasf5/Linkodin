@@ -1,4 +1,4 @@
-import UserModel from "../model/UserModel.js";
+import User from "../models/User.js";
 
 const ValidationUser = async (req, res, next) => {
   const { nome, email, descricao } = req.body;
@@ -8,7 +8,9 @@ const ValidationUser = async (req, res, next) => {
       error: "Dados incompletos",
     });
   }
-  const userEncontrado = await UserModel.findOne({ email });
+  
+  const userEncontrado = await User.findOne({ where: { email } });
+
   if (userEncontrado) {
     return res.status(400).json({
       error: "Usuário já cadastrado",
