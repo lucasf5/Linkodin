@@ -1,14 +1,17 @@
-import { Router } from 'express';
-import UserController from '../controller/UserController.js';
-import ValidationUser from '../middlewares/ValidationUser.js';
+// import ValidationUser from '../middlewares/ValidationUser.js';
 
-const UserRouter = Router();
+const { Router } = require('express');
+const UserController = require('../controller/UserController');
 
-UserRouter
-    .get('/', UserController.getAll)
-    .get('/:id', UserController.getById)
-    .post('/create-user', ValidationUser, UserController.create)
-    .put('/:id', UserController.update)
-    .delete('/:id', UserController.delete); 
+const router = Router();
 
-export default UserRouter;
+const baseUrl = '/users';
+
+router
+    .get(`${baseUrl}`, UserController.listarTodosUsuarios)
+    .get(`${baseUrl}/:id`, UserController.listarUsuarioPorId)
+    .post(`/register`, UserController.novoUsuario)
+    .put(`${baseUrl}/:id`, UserController.atualizarUsuario)
+    .delete(`${baseUrl}/:id`, UserController.deletarUsuario)
+
+module.exports = router;
