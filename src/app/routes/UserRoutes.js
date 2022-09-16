@@ -1,7 +1,7 @@
 // import ValidationUser from '../middlewares/ValidationUser.js';
 
 const { Router } = require('express');
-const UserController = require('../controller/UserController');
+const UserController = require('../controllers/UserController');
 
 const router = Router();
 
