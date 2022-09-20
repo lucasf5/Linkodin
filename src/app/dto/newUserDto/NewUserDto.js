@@ -1,7 +1,7 @@
 class NewUserDto{
-    constructor(body){
+    constructor(body, senhaHash){
         this.nome_usuario = body.nome_usuario;
-        this.senha = body.senha;
+        this.senha = senhaHash;
         this.usuario_tipo = body.usuario_tipo;
         this.createdAt = new Date;
         this.updatedAt = new Date;

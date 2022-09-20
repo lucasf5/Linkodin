@@ -1,8 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const rotas = require('./app/routes');
-// const db = require('./app/config/dbConnect');
 const { serve, setup } = require('swagger-ui-express');
 const swaggerDocument = require('../swagger.json');
+const { auth } = require('./app/config');
 
 const app = express();
 

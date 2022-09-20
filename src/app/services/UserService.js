@@ -1,6 +1,7 @@
 const GeneralService = require('./GeneralService');
 const database = require('../models');
 const { sequelize } = require('../models');
+const { PasswordHashGenerate } = require('../utils');
 const { 
     NewUserDto, 
     NewInfoPessoaisDto, 
@@ -23,9 +24,17 @@ class UserService extends GeneralService{
     async createNewUser(body){
         let novoUsuario;
 
+        const senhaHash = await PasswordHashGenerate.generateHash(body.senha);
+
+        PasswordHashGenerate.compareHash('123456', senhaHash)
+        
+
         await sequelize.transaction(async transaction =>{
             novoUsuario = await database.Usuarios.create(
-                new NewUserDto(body), {transaction});
+                new NewUserDto(
+                    body, 
+                    senhaHash, 
+                    {transaction}));
                 
             const novoInfoPessoais = await database.InfoPessoais.create(
                 new NewInfoPessoaisDto(body, novoUsuario.id), {transaction});
@@ -72,6 +81,39 @@ class UserService extends GeneralService{
                 where: { id: enderecos.id }
             }, {transaction});
         });
+    }
+
+    async getUserByEmail(email){
+        let contatos, infoPessoais, usuario, enderecos, habilidades, hab_hard;
+
+        await sequelize.transaction(async transaction =>{
+            contatos = await database.Contatos.findOne({
+                where: { email }
+            }, { transaction });
+
+            if(contatos){
+                infoPessoais = await database.InfoPessoais.findOne({
+                    where:{ id: contatos.fk_infopessoais_cont_id },
+                    include:[
+                        {model: database.Usuarios}]
+                }, { transaction });
+            }  
+        });
+
+        
+        console.log(infoPessoais)
+                
+        return contatos.email;
+    }
+
+    verifyUser(usuario){
+        if(!usuario) throw new Error();
+    }
+
+    async verifyPassword(senha, senhaHash){
+        const valida = await PasswordHashGenerate.compareHash(senha, senhaHash);
+    
+        if(!valida) throw new Error();
     }
 }
 
