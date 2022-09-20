@@ -1,5 +1,6 @@
 const { GeneralService, UserService } = require('../services');
 const { StatusCode } = require('../enums');
+const { TokenJwt } = require('../utils')
 
 const service = new GeneralService('Usuarios');
 const usuarioService = new UserService();
@@ -27,9 +28,13 @@ class UserController{
         }
     }
 
-    // static async login(req, res){
-
-    // }
+    static async login(req, res){
+        // console.log(`controller: ${req.user}`)
+        const token = await TokenJwt.createToken(req.user);
+        res.set('Authorization', token);
+        res.status(200).json({mensagem: 'deu bom?'});
+        
+    }
 
     // static async logout(req, res){
 
