@@ -1,6 +1,5 @@
-const PasswordHashGenerate = require('./PasswordHashGenerate');
-
 module.exports = {
-    PasswordHashGenerate,
-    TokenJwt: require('./TokenJwt')
+    PasswordHashGenerate: require('./PasswordHashGenerate'),
+    TokenJwt: require('./TokenJwt'),
+    getAge: require('./getAge')
 };
