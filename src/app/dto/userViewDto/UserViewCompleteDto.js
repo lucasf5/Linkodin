@@ -1,9 +1,11 @@
+const { getAge } = require('../../utils')
+
 class UserViewCompleteDto{
     constructor(user, infoPessoais, contatos, enderecos, habilidades, hardskills, softskills){
         this.user = {
             id: user.id,
             nome_usuario: user.nome_usuario,
-            data_nasc: infoPessoais.data_nasc,
+            idade: getAge(infoPessoais.data_nasc),
             nome_completo: infoPessoais.nome_completo,
             cpf_cnpj: infoPessoais.cpf_cnpj,
             sobre: infoPessoais.sobre,
@@ -25,12 +27,12 @@ class UserViewCompleteDto{
             estado: enderecos.estado,
         }
 
-        this.habilities = {
+        this.habilities = habilidades ? {
             area: habilidades.area,
             senioridade: habilidades.senioridade,
             hardskills: [...hardskills],
             softskills: [...softskills]
-        } || null;
+        } : null;
     }
 }
 

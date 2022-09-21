@@ -3,11 +3,11 @@ const { validationLogin, validationToken } = require('../middlewares');
 const passport = require('passport')
 
 const { Router } = require('express');
-const UserController = require('../controllers/UserController');
+const { UserController } = require('../controllers');
 
 const router = Router();
 
-const baseUrl = '/users';
+const baseUrl = `${process.env.ROUTE_BASE}/users`;
 
 router
     .get(`${baseUrl}`, validationToken, UserController.listarTodosUsuarios)

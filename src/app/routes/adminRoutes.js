@@ -1,9 +1,9 @@
 const { Router } = require('express');
-const AdminController = require('../controllers/AdminController');
+const { AdminController } = require('../controllers');
 
 const router = Router();
 
-const baseUrl = '/admin';
+const baseUrl = `${process.env.ROUTE_BASE}/admin`;
 
 router
     .get(`${baseUrl}/users`, AdminController.getAllUsers)

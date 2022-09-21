@@ -1,13 +1,13 @@
 const database = require('../models');
 const { InfoPessoais, Habilidades } = require('../models');
 const { StatusCode } = require('../enums');
-const { OffererService, GeneralService } = require('../services');
+const { RecruiterService, GeneralService } = require('../services');
 const { UserViewDto } = require('../dto');
 
-const offererService = new OffererService();
+const recruiterService = new RecruiterService();
 const generalService = new GeneralService('Usuarios');
 
-class OffererController{
+class RecruiterController{
     static async getRegisteredVacancies(req,res){
         const { id } = req.params;
         try {
@@ -21,7 +21,7 @@ class OffererController{
     }
     static async newJob(req, res){
         try {
-            const job = await offererService.createJobVacancy(req.body);
+            const job = await RecruiterService.createJobVacancy(req.body);
             return res.status(StatusCode.OK).json(job);
         } catch (error) {
             return res.status(StatusCode.INTERNAL_SERVER_ERROR).json({ message: error.message });
@@ -44,7 +44,7 @@ class OffererController{
 
     static async getCandidateById(req, res){
         try {
-            const candidate = await offererService.getCandidateById(req.params);
+            const candidate = await recruiterService.getCandidateById(req.params);
 
             return candidate === null ?
                 res.status(StatusCode.NO_CONTENT).json(candidate):
@@ -57,7 +57,7 @@ class OffererController{
     static async deleteJobById(req, res){
         const { id } = req.params;
         try {
-            const job = await offererService.deleteById(id, false);
+            const job = await recruiterService.deleteById(id, false);
             return job === 0 ?
                 res.status(StatusCode.NO_CONTENT).json(job):
                 res.status(StatusCode.OK).json(job);
@@ -67,4 +67,4 @@ class OffererController{
     }
 }
 
-module.exports = OffererController;
+module.exports = RecruiterController;

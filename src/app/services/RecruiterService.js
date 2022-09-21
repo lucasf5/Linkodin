@@ -48,17 +48,19 @@ class OffererService extends GeneralService{
             enderecos = await database.Enderecos.findOne({
                 where: { fk_infopessoais_end_id: infoPessoais.id }
             }, { transaction });
-
-            habilidades = await database.Habilidades.findAll({
-                where:{ id: user.id },
-                include:[
-                    {model: database.HardSkills}, 
-                    {model: database.SoftSkills}]
-            }, { transaction });
-
-            hab_hard = await database.HabilidadeHards.findAll({
-                where: { fk_habilidade_habilidadehard_id :habilidades[0]['dataValues'].id }
-            }, { transaction })
+            
+            if(user.usuario_tipo===3){
+                habilidades = await database.Habilidades.findAll({
+                    where:{ fk_usuarios_hab_id: user.id },
+                    include:[
+                        {model: database.HardSkills}, 
+                        {model: database.SoftSkills}]
+                }, { transaction });
+                
+                hab_hard = await database.HabilidadeHards.findAll({
+                    where: { fk_habilidade_habilidadehard_id : habilidades[0]['dataValues'].id }
+                }, { transaction });
+            }
         });
 
         return new UserViewCompleteDto(
@@ -66,23 +68,35 @@ class OffererService extends GeneralService{
             infoPessoais, 
             contatos, 
             enderecos, 
-            habilidades[0]['dataValues'], 
-            habilidades[0]['HardSkills'].map((hardskill, i) => {
-                return { 
-                    id: hardskill.id, 
-                    nome_hardskill: 
-                    hardskill.nome_hardskill, 
-                    level: hab_hard[i]['dataValues'].level
-                }
-            }),
-            habilidades[0]['SoftSkills'].map(softskill => {
-                return { 
-                    id: softskill.id, 
-                    nome_softskill: softskill.nome_softskill
-                }
-            })
+            habilities(habilidades), 
+            hardskills(habilidades, hab_hard),
+            softskills(habilidades)
         );
     }
+}
+
+function habilities(habilidade){
+    return habilidade ? habilidade[0]['dataValues'] : null;
+}
+
+function hardskills(hardskills, hab_hard){
+    return hardskills ? hardskills[0]['HardSkills'].map((hardskill, i) => {
+        return { 
+            id: hardskill.id, 
+            nome_hardskill: 
+            hardskill.nome_hardskill, 
+            level: hab_hard ? hab_hard[i]['dataValues'].level : null
+        }
+    }) : null;
+}
+
+function softskills(softskills){
+    return softskills ? softskills[0]['SoftSkills'].map(softskill => {
+        return { 
+            id: softskill.id, 
+            nome_softskill: softskill.nome_softskill
+        }
+    }) : null;
 }
 
 module.exports = OffererService;

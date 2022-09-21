@@ -1,9 +1,9 @@
 const { Router } = require('express');
-const CandidateController = require('../controllers/CandidateController');
+const { CandidateController } = require('../controllers');
 
 const router = Router();
 
-const baseUrl = '/candidate';
+const baseUrl = `${process.env.ROUTE_BASE}/candidate`;
 
 router
     .get(`${baseUrl}/job`, CandidateController.getAllVagas)
