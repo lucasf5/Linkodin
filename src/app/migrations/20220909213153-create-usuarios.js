@@ -16,7 +16,7 @@ module.exports = {
       },
       senha: {
         allowNull: false,
-        type: Sequelize.STRING(6)
+        type: Sequelize.STRING
       },
       usuario_tipo: {
         allowNull: false,

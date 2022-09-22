@@ -1,4 +1,5 @@
 module.exports = {
     validationLogin: require('./validationLogin'),
-    validationToken: require('./validationToken')
+    validationToken: require('./validationToken'),
+    validationUser : require('./validationUser')
 }

@@ -33,8 +33,8 @@ class UserService extends GeneralService{
             novoUsuario = await database.Usuarios.create(
                 new NewUserDto(
                     body, 
-                    senhaHash, 
-                    {transaction}));
+                    senhaHash 
+              ),{ transaction });
                 
             const novoInfoPessoais = await database.InfoPessoais.create(
                 new NewInfoPessoaisDto(body, novoUsuario.id), {transaction});

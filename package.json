@@ -5,7 +5,9 @@
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "test": "mocha --timeout=10000 --exit ./src/tests/**/*.test.js",
+    "swagger-autogen": "node ./swagger.js"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +30,8 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.4.1"
+    "mocha": "^10.0.0",
+    "sequelize-cli": "^6.4.1",
+    "swagger-autogen": "^2.21.10"
   }
 }

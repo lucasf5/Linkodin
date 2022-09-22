@@ -10,11 +10,93 @@
       "email": "lucasfpnt@gmail.com"
     }
   },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
   "paths": {
+    "/register": {
+      "post": {
+        "tags": ["Autenticação"],
+        "description": "Login",
+        "summary": "Register",
+        "requestBody":{
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome_usuario": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "senha": {
+                    "type": "string"
+                  },
+                  "usuario_tipo": {
+                    "type": "string"
+                  },
+                  "cpf_cnpj": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "200": {
+            "description": "Ok"
+          },
+          "400": {
+            "description": "Could not register this user"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags":["Autenticação"],
+        "summary": "Summary: Deve verificar o usuario e retornar o token jwt para usuario válido",
+        "description": "Login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "senha": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Ok"
+          },
+          "400": {
+            "description": "Unable to login this user"
+          }
+        }
+      }
+    },
     "/users": {
       "get": {
         "tags": [
-          "users"
+          "Usuários"
         ],
         "summary": "Summary: List all users",
         "description": "List all users",
@@ -35,7 +117,7 @@
     "/users/{id}": {
       "get": {
         "tags": [
-          "users"
+          "Usuários"
         ],
         "summary": "Summary: Get a user by id",
         "description": "Get a user by id",
@@ -64,49 +146,8 @@
           }
         }
       }
-    },
-    "/register": {
-      "post": {
-        "tags": [
-          "users"
-        ],
-        "summary": "Summary: Create a new user",
-        "description": "Create a new user",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "nome_usuario": {
-                    "type": "string"
-                  },
-                  "email": {
-                    "type": "string"
-                  },
-                  "senha": {
-                    "type": "string"
-                  },
-                  "usuario_tipo": {
-                    "type": "integer"
-                  },
-                  "cpf_cnpj": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Category already exists"
-          }
-        }
-      }
     }
+   
+
   }
 }
