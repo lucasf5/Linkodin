@@ -1,3 +1,5 @@
+[![API LinkOdin - Node.js CI](https://github.com/lucasf5/Linkodin/actions/workflows/node.js.yml/badge.svg)](https://github.com/lucasf5/Linkodin/actions/workflows/node.js.yml)
+
 # API Linkodin - Registration of Vacancies and Candidates
 API developed as an integrator project in the Digital House Course - IFood.
 
