@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "REST API",
+    "title": "API LINKODIN - Proj. Integrador DIGITAL HOUSE / IFOOD 2022",
     "description": "API documentation for the API",
     "contact": {
       "name": "Lucas",

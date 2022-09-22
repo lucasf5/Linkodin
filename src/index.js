@@ -7,9 +7,14 @@ require('./app/config');
 
 const app = express();
 
-app.use('/api-docs', serve, setup(swaggerDocument));
+var options = {
+  customCss: '.swagger-ui .wrapper { padding: 0 6rem .5rem 6rem }',
+};
+
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
+app.use('/api-docs', serve, setup(swaggerDocument, options));
 
 rotas(app);
 
