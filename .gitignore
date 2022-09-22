@@ -1,3 +1,7 @@
 node_modules
 .env
 src/app/config/config.json
+swagger-admin.json
+swagger-candidate.json
+swagger-recruiter.json
+swagger-user.json
