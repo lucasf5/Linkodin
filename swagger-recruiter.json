@@ -1,28 +1,27 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:3000",
-  "basePath": "/",
-  "schemes": [
-    "http"
+  "servers": [
+    {
+      "url": "http://localhost:3000/"
+    }
   ],
   "paths": {
     "/registeredjobs/{id}": {
       "get": {
-        "tags": [
-          "Recruiter"
-        ],
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {}
@@ -30,9 +29,6 @@
     },
     "/allcandidates": {
       "get": {
-        "tags": [
-          "Recruiter"
-        ],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -40,16 +36,15 @@
     },
     "/candidate/{id}": {
       "get": {
-        "tags": [
-          "Recruiter"
-        ],
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {}
@@ -57,9 +52,6 @@
     },
     "/newjob": {
       "post": {
-        "tags": [
-          "Recruiter"
-        ],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -67,22 +59,19 @@
     },
     "/deletejob/{id}": {
       "delete": {
-        "tags": [
-          "Recruiter"
-        ],
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {}
       }
     }
-
-    
   }
 }

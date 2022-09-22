@@ -5,7 +5,7 @@ class TokenJwt{
         const payload = {
             id: user.id
         }
-        return jsonWebToken.sign(payload, process.env.JWT_kEY, {expiresIn: '15m'});
+        return jsonWebToken.sign(payload, process.env.JWT_kEY, {expiresIn: '60m'});
     }
 }
 

@@ -1,21 +1,18 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:3000",
-  "basePath": "/",
-  "schemes": [
-    "http"
+  "servers": [
+    {
+      "url": "http://localhost:3000/"
+    }
   ],
   "paths": {
     "/job": {
       "get": {
-        "tags":[
-          "Candidate"
-        ],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -23,16 +20,15 @@
     },
     "/appliedjobs/{id}": {
       "get": {
-        "tags": [
-          "Candidate"
-        ],
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {}
@@ -40,9 +36,6 @@
     },
     "/applyjob": {
       "post": {
-        "tags": [
-          "Candidate"
-        ],
         "description": "",
         "parameters": [],
         "responses": {}

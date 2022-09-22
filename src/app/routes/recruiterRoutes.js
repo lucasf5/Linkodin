@@ -11,4 +11,5 @@ router
     .get(`${baseUrl}/candidate/:id`, RecruiterController.getCandidateById)
     .post(`${baseUrl}/newjob`, RecruiterController.newJob)
     .delete(`${baseUrl}/deletejob/:id`, RecruiterController.deleteJobById)
+    
 module.exports = router;

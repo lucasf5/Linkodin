@@ -1,4 +1,4 @@
-const swaggerAutogen = require('swagger-autogen')()
+const swaggerAutogen = require('swagger-autogen')({ language: 'pt-BR' , openapi: '3.0.0' }); 
 
 swaggerAutogen('./swagger-admin.json', ['./src/app/routes/adminRoutes.js']);
 swaggerAutogen('./swagger-user.json', ['./src/app/routes/userRoutes.js']);

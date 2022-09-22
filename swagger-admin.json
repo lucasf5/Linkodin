@@ -1,46 +1,42 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:3000",
-  "basePath": "/",
-  "schemes": [
-    "http"
+  "servers": [
+    {
+      "url": "http://localhost:3000/"
+    }
   ],
   "paths": {
     "/users": {
       "get": {
-        "tags":[
-          "Admin"
-        ],
         "description": "",
         "parameters": [],
         "responses": {}
       },
       "post": {
-        "tags": [
-          "Admin"
-        ],
         "description": "",
         "parameters": [],
+        "requestBody": {
+
+        },
         "responses": {}
       }
     },
     "/users/{id}": {
       "get": {
-        "tags": [
-          "Admin"
-        ],
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {}
@@ -48,16 +44,15 @@
     },
     "/users/softdelete/{id}": {
       "delete": {
-        "tags": [
-          "Admin"
-        ],
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {}
@@ -65,16 +60,15 @@
     },
     "/users/harddelete/{id}": {
       "delete": {
-        "tags": [
-          "Admin"
-        ],
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {}
@@ -82,17 +76,11 @@
     },
     "/hardskill": {
       "get": {
-        "tags": [
-          "Admin"
-        ],
         "description": "",
         "parameters": [],
         "responses": {}
       },
       "post": {
-        "tags": [
-          "Admin"
-        ],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -100,16 +88,15 @@
     },
     "/hardskill/{id}": {
       "delete": {
-        "tags": [
-          "Admin"
-        ],
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {}
@@ -117,17 +104,11 @@
     },
     "/softskill": {
       "get": {
-        "tags": [
-          "Admin"
-        ],
         "description": "",
         "parameters": [],
         "responses": {}
       },
       "post": {
-        "tags": [
-          "Admin"
-        ],
         "description": "",
         "parameters": [],
         "responses": {}
@@ -135,17 +116,15 @@
     },
     "/softskill/{id}": {
       "delete": {
-        "tags": [
-          "Admin"
-        ],
         "description": "",
         "parameters": [
           {
-            
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {}

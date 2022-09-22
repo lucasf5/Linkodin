@@ -29,11 +29,11 @@ class UserController{
     }
 
     static async login(req, res){
-        // console.log(`controller: ${req.user}`)
+        // console.log(`controller: ${req.user}`);
+        // console.log('controller: ', req.body);
         const token = await TokenJwt.createToken(req.user);
         res.set('Authorization', token);
-        res.status(200).json({mensagem: 'deu bom?'});
-        
+        res.status(200).json({ mensagem: 'Login successfully', token });
     }
 
     // static async logout(req, res){

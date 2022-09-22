@@ -7,7 +7,10 @@
   "scripts": {
     "start": "nodemon",
     "test": "mocha --timeout=10000 --exit ./src/tests/**/*.test.js",
-    "swagger-autogen": "node ./swagger.js"
+    "swagger-autogen": "node ./swagger.js",
+    "db:drop": "sequelize db:drop",
+    "db:create": "sequelize db:create",
+    "db:migrate": "sequelize db:migrate"
   },
   "keywords": [],
   "author": "",

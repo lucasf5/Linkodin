@@ -1,9 +1,12 @@
+const { validationLogin, validationToken, validationUser } = require('../middlewares');
 const { Router } = require('express');
 const { AdminController } = require('../controllers');
 
 const router = Router();
 
 const baseUrl = `${process.env.ROUTE_BASE}/admin`;
+
+router.use('*', validationToken );
 
 router
     .get(`${baseUrl}/users`, AdminController.getAllUsers)
