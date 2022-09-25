@@ -1,4 +1,4 @@
-class NewVagasSoftsDto{
+module.exports = class NewVagasSoftsDto{
     constructor(softskill, id){
         this.fk_vagas_vagassoft_id = id;
         this.fk_softskill_vagassoft_id = softskill.softskill_id;
@@ -6,5 +6,3 @@ class NewVagasSoftsDto{
         this.updatedAt = new Date;
     }
 }
-
-module.exports = NewVagasSoftsDto;

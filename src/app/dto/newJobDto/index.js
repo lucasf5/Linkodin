@@ -1,9 +1,8 @@
-const NewJobDto = require('./NewJobDto');
-const NewVagasHardsDto = require('./NewVagasHardsDto');
-const NewVagasSoftsDto = require('./NewVagasSoftsDto');
-
 module.exports = {
-    NewJobDto,
-    NewVagasHardsDto,
-    NewVagasSoftsDto
+    NewJobDto: require('./NewJobDto'),
+    NewVagasHardsDto: require('./NewVagasHardsDto'),
+    NewVagasSoftsDto: require('./NewVagasSoftsDto'),
+    UpdateJobDto: require('./UpdateJobDto'),
+    UpdateVagasHardsDto: require('./UpdateVagasHardsDto'),
+    UpdateVagasSoftsDto: require('./UpdateVagasSoftsDto')
 }

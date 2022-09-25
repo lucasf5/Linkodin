@@ -6,7 +6,7 @@ const router = Router();
 
 const baseUrl = `${process.env.ROUTE_BASE}/admin`;
 
-router.use('*', validationToken );
+// router.use('*', validationToken );
 
 router
     .get(`${baseUrl}/users`, AdminController.getAllUsers)
