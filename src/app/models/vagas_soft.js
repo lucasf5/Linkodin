@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   VagasSofts.init({
-    n: DataTypes.STRING
+    
   }, {
     sequelize,
     modelName: 'VagasSofts',

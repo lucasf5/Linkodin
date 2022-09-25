@@ -9,19 +9,28 @@ const generalService = new GeneralService('Usuarios');
 
 class RecruiterController{
     static async getRegisteredVacancies(req,res){
-        const { id } = req.params;
         try {
-            const registeredVacancies = await database.Vagas.findAll({
-                 where: { fk_usuarios_vag_id: id }
+            const alljobs = await database.Vagas.findAll({
+                where: { fk_usuarios_vag_id: req.params.recruiterid}
             });
-            return res.status(StatusCode.OK).json(registeredVacancies);
+            return res.status(StatusCode.OK).json(alljobs);
         } catch (error) {
             return res.status(StatusCode.INTERNAL_SERVER_ERROR).json({ message: error.message });
         }
     }
+
+    static async getRegisteredVacanciesById(req,res){
+        try {
+            const job = await recruiterService.getJobById(req);
+            return res.status(StatusCode.OK).json(job);
+        } catch (error) {
+            return res.status(StatusCode.INTERNAL_SERVER_ERROR).json({ message: error.message });
+        }
+    }
+
     static async newJob(req, res){
         try {
-            const job = await RecruiterService.createJobVacancy(req.body);
+            const job = await recruiterService.createJobVacancy(req.body);
             return res.status(StatusCode.OK).json(job);
         } catch (error) {
             return res.status(StatusCode.INTERNAL_SERVER_ERROR).json({ message: error.message });
@@ -35,7 +44,7 @@ class RecruiterController{
             
             const userInfo = users.rows.map(user => new UserViewDto(user));
             return userInfo.length === 0 ?
-                res.status(StatusCode.NO_CONTENT).json({count: users.count, rows: userInfo}):
+                res.status(StatusCode.NO_CONTENT).json():
                 res.status(StatusCode.OK).json({count: users.count, rows: userInfo});
         } catch (error) {
             return res.status(StatusCode.INTERNAL_SERVER_ERROR).json({ message: error.message });
@@ -61,6 +70,16 @@ class RecruiterController{
             return job === 0 ?
                 res.status(StatusCode.NO_CONTENT).json(job):
                 res.status(StatusCode.OK).json(job);
+        } catch (error) {
+            return res.status(StatusCode.INTERNAL_SERVER_ERROR).json({ message: error.message });
+        }
+    }
+
+    static async updateJobById(req, res){
+        const job = await recruiterService.updateJob(req);
+        try {
+            const job = await recruiterService.updateJob(req);
+            return res.status(StatusCode.OK).json(job);
         } catch (error) {
             return res.status(StatusCode.INTERNAL_SERVER_ERROR).json({ message: error.message });
         }

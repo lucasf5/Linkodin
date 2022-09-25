@@ -1,10 +1,6 @@
-const { UserViewDto, UserViewCompleteDto } = require('./userViewDto');
-const { NewHardSkillDto } = require('./newHardSkillDto');
-const { NewSoftSkillDto } = require('./newSoftSkillDto');
-
 module.exports = {
-    UserViewDto,
-    UserViewCompleteDto,
-    NewHardSkillDto,
-    NewSoftSkillDto
+    UserViewDto: require('./userViewDto').UserViewDto,
+    UserViewCompleteDto: require('./userViewDto').UserViewCompleteDto,
+    NewHardSkillDto: require('./newHardSkillDto').NewHardSkillDto,
+    NewSoftSkillDto: require('./newSoftSkillDto').NewSoftSkillDto
 }
