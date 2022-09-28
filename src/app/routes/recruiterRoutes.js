@@ -1,9 +1,12 @@
 const { Router } = require('express');
+const { validationToken } = require('../middlewares');
 const { RecruiterController } = require('../controllers');
 
 const router = Router();
 
 const baseUrl = `${process.env.ROUTE_BASE}/recruiter`;
+
+router.use('*', validationToken );
 
 router
     .get(`${baseUrl}/:recruiterid/alljobs`, RecruiterController.getRegisteredVacancies)

@@ -7,7 +7,7 @@ const baseUrl = `${process.env.ROUTE_BASE}/candidate`;
 
 router
     .get(`${baseUrl}/job`, CandidateController.getAllVagas)
-    .get(`${baseUrl}/appliedjobs/:id`, CandidateController.getAppliedJobs)
+    .get(`${baseUrl}/:id/appliedjobs`, CandidateController.getAppliedJobs)
     .post(`${baseUrl}/applyjob`, CandidateController.candidatarVagar)
     
 

@@ -1,4 +1,4 @@
-const { validationLogin, validationToken, validationUser } = require('../middlewares');
+const { validationLogin, validationUser } = require('../middlewares');
 const passport = require('passport')
 
 const { Router } = require('express');
