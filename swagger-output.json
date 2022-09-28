@@ -12,7 +12,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/"
+      "url": "http://localhost:3000/api/v1"
     }
   ],
   "components": {
@@ -106,7 +106,7 @@
       }
     },
     
-    "/api/v1/admin/users": {
+    "/admin/users": {
       "get": {
         "security": [
           {
@@ -137,7 +137,7 @@
         "responses": {}
       }
     },
-    "/api/v1/admin/users/{id}": {
+    "/admin/users/{id}": {
       "get": {
         "security": [
           {
@@ -159,7 +159,7 @@
         "responses": {}
       }
     },
-    "/api/v1/admin/users/softdelete/{id}": {
+    "/admin/users/softdelete/{id}": {
       "delete": {
         "security": [
           {
@@ -181,7 +181,7 @@
         "responses": {}
       }
     },
-    "/api/v1/admin/users/harddelete/{id}": {
+    "/admin/users/harddelete/{id}": {
       "delete": {
         "security": [
           {
@@ -203,60 +203,7 @@
         "responses": {}
       }
     },
-    "/api/v1/admin/hardskill": {
-      "get": {
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "tags": [
-          "Admin"
-        ],
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      },
-      "post": {
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "tags": [
-          "Admin"
-        ],
-        "description": "",
-        "parameters": [],
-        "requestBody": {
-
-        },
-        "responses": {}
-      }
-    },
-    "/api/v1/admin/hardskill/{id}": {
-      "delete": {
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "tags": [
-          "Admin"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/api/v1/admin/softskill": {
+    "/admin/hardskill": {
       "get": {
         "security": [
           {
@@ -287,7 +234,60 @@
         "responses": {}
       }
     },
-    "/api/v1/admin/softskill/{id}": {
+    "/admin/hardskill/{id}": {
+      "delete": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/admin/softskill": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "parameters": [],
+        "requestBody": {
+
+        },
+        "responses": {}
+      }
+    },
+    "/admin/softskill/{id}": {
       "delete": {
         "security": [
           {
@@ -310,7 +310,7 @@
       }
     },
 
-    "/api/v1/users":{
+    "/users":{
       "get": {
         "tags":[
           "Usuários"
@@ -320,7 +320,7 @@
         "responses": {}
       }
     },
-    "/api/v1/users/{id}": {
+    "/users/{id}": {
       "get": {
         "tags": [
           "Usuários"
@@ -371,7 +371,7 @@
 
 
     
-    "/api/v1/recruiter/registeredjobs/{id}": {
+    "/recruiter/registeredjobs/{id}": {
       "get": {
         "tags": [
           "Recrutador"
@@ -389,7 +389,7 @@
       }
     },
 
-    "/api/v1/recruiter/allcandidates": {
+    "/recruiter/allcandidates": {
       "get": {
         "tags": [
           "Recrutador"
@@ -399,7 +399,7 @@
         "responses": {}
       }
     },
-    "/api/v1/recruiter/candidate/{id}": {
+    "/recruiter/candidate/{id}": {
       "get": {
         "tags": [
           "Recrutador"
@@ -416,7 +416,7 @@
         "responses": {}
       }
     },
-    "/api/v1/recruiter/newjob": {
+    "/recruiter/newjob": {
       "post": {
         "tags": [
           "Recrutador"
@@ -427,7 +427,7 @@
         "responses": {}
       }
     },
-    "/api/v1/recruiter/deletejob/{id}": {
+    "/recruiter/deletejob/{id}": {
       "delete": {
         "tags": [
           "Recrutador"
@@ -445,7 +445,7 @@
       }
     },
 
-    "/api/v1/candidate/job": {
+    "/candidate/job": {
       "get": {
         "tags": [
           "Candidato"
@@ -455,7 +455,7 @@
         "responses": {}
       }
     },
-    "/api/v1/candidate/appliedjobs/{id}": {
+    "/candidate/appliedjobs/{id}": {
       "get": {
         "tags": [
           "Candidato"
@@ -472,7 +472,7 @@
         "responses": {}
       }
     },
-    "/api/v1/candidate/applyjob": {
+    "/candidate/applyjob": {
       "post": {
         "tags": [
           "Candidato"

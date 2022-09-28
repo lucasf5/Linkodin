@@ -5,3 +5,4 @@ swagger-admin.json
 swagger-candidate.json
 swagger-recruiter.json
 swagger-user.json
+src/app/Config/config.json
